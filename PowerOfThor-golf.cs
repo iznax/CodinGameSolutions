@@ -1,0 +1,1 @@
+using System;class P{static void Main(){Func<string>r=Console.ReadLine;Func<string,int>p=int.Parse;string[]i=r().Split(' ');int x=p(i[0])-p(i[2]);int y=p(i[1])-p(i[3]);var d=x>0?"E":"W";var e=y>0?"S":"N";x=x>0?x:-x;y=y>0?y:-y;var b=x<y;if(b){var t=d;d=e;e=t;}int m=b?y:x;int n=b?x:y;int a=m/2;for(;;){r();a+=n;b=a>m;a=b?a-m:a;Console.WriteLine(b?e+d:d);}}}
