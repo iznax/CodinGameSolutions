@@ -12,9 +12,12 @@ class S
 
         Action dump=()=>
         {
-            code+=code.Length>0?" ":"";
-            code+=b>0?"0 ":"00 ";
-            while(count-->0)code+="0";
+            if (count > 0)
+            {
+                code+=code.Length>0?" ":"";
+                code+=b>0?"0 ":"00 ";
+                while(count-->0)code+="0";
+            }
         };
         
         foreach (var r in C.ReadLine())
@@ -23,22 +26,15 @@ class S
             {
                 if ((k&64)!=b)
                 {
-                    if (count>0) dump();
+                    dump();
                     b = k&64;
                     count=0;
                 }
             }
         }
         
-        if (count != 0)
-        {
-            dump();
-            //code+=code.Length>0?" ":"";
-            //code+=b?"0 ":"00 ";
-            //while(count-->0)code+="0";
-            //code += (code.Length == 0) ? "" : " ";
-            //code += dump(b,count);
-        }
+        dump();
+
         C.Write(code);
     }
 }
