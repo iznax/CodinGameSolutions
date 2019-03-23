@@ -1,41 +1,13 @@
-//using System;ConsoleConsole
-namespace System{using C=Console;
-
-class S
+namespace System
 {
-    static void Main()
+    class Program
     {
-        var code="";
-        
-        int b=-1;
-        int count = 0;
-
-        Action dump=()=>
+        static void Main()
         {
-            if (count > 0)
-            {
-                code+=code.Length>0?" ":"";
-                code+=b>0?"0 ":"00 ";
-                while(count-->0)code+="0";
-            }
-        };
-        
-        foreach (var r in C.ReadLine())
-            {int k=r;
-            for(int i=0; i<7; ++i,k*=2,count++)
-            {
-                if ((k&64)!=b)
-                {
-                    dump();
-                    b = k&64;
-                    count=0;
-                }
-            }
+            int i, k, o=2;
+            foreach(char c in Console.ReadLine())
+                for(i=7; i-- > 0; o=k)
+                    Console.Write( (k=c>>i&1) != o ? (o>1?"":" ") + (k>0?"0 0":"00 0") : "0" );
         }
-        
-        dump();
-
-        C.Write(code);
     }
-}
 }
